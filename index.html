@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judex Beats | Rap & Hip-Hop Prodüksiyon</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tone.js for Web Audio -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.77/Tone.js"></script>
+
+    <style>
+        /* Custom font families */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+        }
+        .font-marker {
+            font-family: 'Permanent Marker', cursive;
+        }
+        /* Neon shadow effect for headings */
+        .neon-text {
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #007CF0, 0 0 20px #007CF0, 0 0 25px #007CF0, 0 0 30px #007CF0, 0 0 35px #007CF0;
+        }
+        /* Gradient text effect */
+        .gradient-text {
+            background: linear-gradient(45deg, #f87171, #fb923c, #a855f7, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        /* Beat pad active state */
+        .beat-pad.active {
+            transform: scale(0.95);
+            box-shadow: 0 0 20px 5px var(--active-color, #fff);
+            background-color: var(--active-color, #fff);
+        }
+        /* Smooth transitions for interactive elements */
+        .beat-pad {
+            transition: all 0.07s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Header / Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-purple-500/10">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-marker text-3xl gradient-text">Judex</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#hizmetler" class="hover:text-purple-400 transition-colors duration-300">Hizmetler</a>
+                <a href="#beat-pad" class="hover:text-orange-400 transition-colors duration-300">Beat Pad</a>
+                <a href="#iletisim" class="hover:text-red-400 transition-colors duration-300">İletişim</a>
+                <a href="#iletisim" class="bg-gradient-to-r from-purple-600 to-indigo-600 px-5 py-2 rounded-full hover:scale-105 transition-transform duration-300 font-semibold">Projeni Başlat</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-2xl">☰</button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+             <a href="#hizmetler" class="block hover:text-purple-400 transition-colors duration-300">Hizmetler</a>
+             <a href="#beat-pad" class="block hover:text-orange-400 transition-colors duration-300">Beat Pad</a>
+             <a href="#iletisim" class="block hover:text-red-400 transition-colors duration-300">İletişim</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center text-center bg-cover bg-center relative" style="background-image: url('https://placehold.co/1920x1080/111827/FFFFFF?text=STUDIO');">
+             <div class="absolute inset-0 bg-black/70"></div>
+             <div class="relative z-10 px-4">
+                <h1 class="text-5xl md:text-8xl font-bold font-marker neon-text mb-4">BEAT'LERİNİ ATEŞLE</h1>
+                <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">Profesyonel Rap & Hip-Hop prodüksiyonları ile sound'unu bir üst seviyeye taşı. Hayalindeki müziği birlikte yaratalım.</p>
+                <a href="#beat-pad" class="mt-8 inline-block bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg shadow-red-500/40 hover:scale-110 transform transition-all duration-300">
+                    Kendi Ritmini Yarat
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="hizmetler" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-2 gradient-text">Prodüksiyon Hizmetleri</h2>
+                <p class="text-gray-400 mb-12">İhtiyacın olan her şey tek bir yerde.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service Card 1: Beat Yapımı -->
+                    <div class="bg-gray-900 p-8 rounded-2xl border border-purple-500/30 shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                        <div class="text-5xl mb-4 text-purple-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 6l12-3" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Özgün Beat'ler</h3>
+                        <p class="text-gray-400">Sana özel, sıfırdan hazırlanan Trap, Drill, Boom Bap ve daha birçok tarzda profesyonel beat'ler.</p>
+                    </div>
+                    <!-- Service Card 2: Mix & Mastering -->
+                    <div class="bg-gray-900 p-8 rounded-2xl border border-orange-500/30 shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                        <div class="text-5xl mb-4 text-orange-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Mix & Mastering</h3>
+                        <p class="text-gray-400">Parçalarının dijital platformlarda standartlara uygun, temiz ve güçlü tınlamasını sağla.</p>
+                    </div>
+                    <!-- Service Card 3: Vokal Kayıt -->
+                    <div class="bg-gray-900 p-8 rounded-2xl border border-red-500/30 shadow-xl hover:-translate-y-2 transition-transform duration-300">
+                        <div class="text-5xl mb-4 text-red-400">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Vokal Kayıt & Prodüksiyon</h3>
+                        <p class="text-gray-400">Profesyonel ekipmanlarla vokal kayıtları alıyor ve parçana en uygun sound'u tasarlıyoruz.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Beat Pad Section -->
+        <section id="beat-pad" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-2 font-marker neon-text" style="--neon-color: #f97316;">Kendi Ritmini Yarat</h2>
+                <p class="text-gray-400 mb-12">Aşağıdaki pad'lere tıkla ve içindeki prodüktörü ortaya çıkar!</p>
+                <div class="grid grid-cols-4 gap-4 max-w-xl mx-auto p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                    <!-- Beat Pad Buttons -->
+                    <div class="beat-pad aspect-square bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg cursor-pointer flex items-center justify-center text-2xl font-bold" data-sound="kick" style="--active-color: #a855f7;">KICK</div>
+                    <div class="beat-pad aspect-square bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg cursor-pointer flex items-center justify-center text-2xl font-bold" data-sound="snare" style="--active-color: #a855f7;">SNARE</div>
+                    <div class="beat-pad aspect-square bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg cursor-pointer flex items-center justify-center text-2xl font-bold" data-sound="hihat" style="--active-color: #a855f7;">HAT</div>
+                    <div class="beat-pad aspect-square bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg cursor-pointer flex items-center justify-center text-2xl font-bold" data-sound="clap" style="--active-color: #a855f7;">CLAP</div>
+                    
+                    <div class="beat-pad aspect-square bg-gradient-to-br from-orange-500 to-red-500 rounded-lg cursor-pointer flex items-center justify-center text-2xl font-bold" data-sound="tom1" style="--active-color: #f97316;">TOM 1</div>
+                    <div class="beat-pad aspect-square bg-gradient-to-br from-orange-500 to-red-500 rounded-lg cursor-pointer flex items-center justify-center text-2xl font-bold" data-sound="tom2" style="--active-color: #f97316;">TOM 2</div>
+                    <div class="beat-pad aspect-square bg-gradient-to-br from-orange-500 to-red-500 rounded-lg cursor-pointer flex items-center justify-center text-2xl font-bold" data-sound="tom3" style="--active-color: #f97316;">TOM 3</div>
+                    <div class="beat-pad aspect-square bg-gradient-to-br from-orange-500 to-red-500 rounded-lg cursor-pointer flex items-center justify-center text-2xl font-bold" data-sound="crash" style="--active-color: #f97316;">CRASH</div>
+
+                    <div class="beat-pad aspect-square bg-gradient-to-br from-teal-400 to-cyan-500 rounded-lg cursor-pointer flex items-center justify-center text-lg" data-sound="fx1" style="--active-color: #2dd4bf;">FX 1</div>
+                    <div class="beat-pad aspect-square bg-gradient-to-br from-teal-400 to-cyan-500 rounded-lg cursor-pointer flex items-center justify-center text-lg" data-sound="fx2" style="--active-color: #2dd4bf;">FX 2</div>
+                    <div class="beat-pad aspect-square bg-gradient-to-br from-teal-400 to-cyan-500 rounded-lg cursor-pointer flex items-center justify-center text-lg" data-sound="vocal1" style="--active-color: #2dd4bf;">VOX</div>
+                    <div class="beat-pad aspect-square bg-gradient-to-br from-teal-400 to-cyan-500 rounded-lg cursor-pointer flex items-center justify-center text-lg" data-sound="vocal2" style="--active-color: #2dd4bf;">YEAH!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="iletisim" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-2 gradient-text">Projeni Hayata Geçir</h2>
+                <p class="text-gray-400 mb-12 max-w-2xl mx-auto">Aklındaki projeyi, sound'u ve hedeflerini konuşalım. Aşağıdaki formu doldur, en kısa sürede sana geri dönüş yapalım.</p>
+                <form class="max-w-xl mx-auto text-left">
+                    <div class="mb-4">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-300">İsim</label>
+                        <input type="text" id="name" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5" placeholder="Adın Soyadın">
+                    </div>
+                     <div class="mb-4">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-300">E-posta</label>
+                        <input type="email" id="email" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5" placeholder="ornek@mail.com">
+                    </div>
+                     <div class="mb-6">
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-300">Proje Detayları</label>
+                        <textarea id="message" rows="4" class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5" placeholder="Bize projen hakkında bilgi ver..."></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold px-8 py-3 rounded-full hover:scale-105 transition-transform duration-300">
+                            Teklif Al
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+            <p>&copy; 2024 Judex Beats. Tüm hakları saklıdır.</p>
+            <p class="text-sm mt-2">Rap müziğin kalbinde, ritimle inşa edildi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- Interactive Beat Pad Logic with Tone.js ---
+        
+        // 1. Create the synth instruments. We use a simple membrane synth for drums.
+        const synths = {
+            'kick': new Tone.MembraneSynth({ octaves: 4, pitchDecay: 0.1, oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 0.4, sustain: 0.01, release: 1.4, attackCurve: 'exponential' } }).toDestination(),
+            'snare': new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.005, decay: 0.2, sustain: 0 } }).toDestination(),
+            'hihat': new Tone.MetalSynth({ frequency: 200, envelope: { attack: 0.001, decay: 0.1, release: 0.01 }, harmonicity: 5.1, modulationIndex: 32, resonance: 4000, octaves: 1.5 }).toDestination(),
+            'clap': new Tone.NoiseSynth({ noise: { type: 'white' }, envelope: { attack: 0.001, decay: 0.1, sustain: 0.1, release: 0.2 }, volume: -5 }).toDestination(),
+            'tom1': new Tone.MembraneSynth({ pitchDecay: 0.05, octaves: 4, oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 0.4, sustain: 0.01, release: 1.4, attackCurve: 'exponential' } }).toDestination(),
+            'tom2': new Tone.MembraneSynth({ pitchDecay: 0.05, octaves: 3, oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 0.4, sustain: 0.01, release: 1.4, attackCurve: 'exponential' } }).toDestination(),
+            'tom3': new Tone.MembraneSynth({ pitchDecay: 0.05, octaves: 2, oscillator: { type: 'sine' }, envelope: { attack: 0.001, decay: 0.4, sustain: 0.01, release: 1.4, attackCurve: 'exponential' } }).toDestination(),
+            'crash': new Tone.MetalSynth({ frequency: 300, envelope: { attack: 0.001, decay: 1.5, release: 2 }, harmonicity: 5.1, modulationIndex: 20, resonance: 2000, octaves: 1.5 }).toDestination(),
+            'fx1': new Tone.FMSynth({ harmonicity: 3, modulationIndex: 10, detune: 0, oscillator: { type: 'sine' }, envelope: { attack: 0.01, decay: 0.1, sustain: 0.5, release: 1 }, modulation: { type: 'square' }, modulationEnvelope: { attack: 0.5, decay: 0, sustain: 1, release: 0.5 } }).toDestination(),
+            'fx2': new Tone.PluckSynth().toDestination(),
+            'vocal1': new Tone.Player({ url: "https://tonejs.github.io/audio/berklee/gong_1.mp3" }).toDestination(), // Placeholder
+            'vocal2': new Tone.Player({ url: "https://tonejs.github.io/audio/siren.mp3" }).toDestination() // Placeholder
+        };
+        
+        // Note pitches for synths that need it
+        const pitches = {
+            'tom1': 'G3',
+            'tom2': 'D3',
+            'tom3': 'G2',
+            'fx2': 'C5'
+        };
+
+        // 2. Add click event listeners to all beat pads
+        document.querySelectorAll('.beat-pad').forEach(pad => {
+            pad.addEventListener('click', async () => {
+                // Ensure audio context is started
+                await Tone.start();
+
+                const sound = pad.dataset.sound;
+                const synth = synths[sound];
+
+                // Trigger the sound
+                if (synth) {
+                    if (sound === 'hihat') {
+                        synth.triggerAttackRelease("C4", "8n");
+                    } else if (sound === 'snare' || sound === 'clap') {
+                        synth.triggerAttack();
+                    } else if (sound.startsWith('vocal')) {
+                        synth.start();
+                    } else if (sound.startsWith('fx') || sound.startsWith('tom')) {
+                         synth.triggerAttackRelease(pitches[sound] || 'C4', '8n');
+                    } else { // Kick
+                        synth.triggerAttackRelease("C1", "8n");
+                    }
+                }
+
+                // Visual feedback
+                pad.classList.add('active');
+                setTimeout(() => {
+                    pad.classList.remove('active');
+                }, 100);
+            });
+        });
+
+        // Add SVG icons to service cards where placeholders are
+        // This is a cleaner way than embedding SVG directly in the HTML for each card
+        const icons = {
+            'Özgün Beat\'ler': `<svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 6l12-3" /></svg>`,
+            'Mix & Mastering': `<svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 4v16m-4-8h8m4-4h4m-4 8h4" /></svg>`,
+            'Vokal Kayıt & Prodüksiyon': `<svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>`
+        };
+        document.querySelectorAll('#hizmetler h3').forEach(h3 => {
+            const serviceName = h3.textContent;
+            if (icons[serviceName]) {
+                h3.previousElementSibling.innerHTML = icons[serviceName];
+            }
+        });
+
+    </script>
+</body>
+</html>
